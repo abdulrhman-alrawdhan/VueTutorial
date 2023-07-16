@@ -1,2 +1,2 @@
 # VueTutorial
-Personal Vue Tutorial for the start 
+Personal Vue Tutorial from beginning  
