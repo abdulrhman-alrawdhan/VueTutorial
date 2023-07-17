@@ -1,23 +1,79 @@
 <!DOCTYPE html>
-<html>
-  <html lang="en">
+<html lang="en">
 <head>
-<title>Hello World!</title>
-<link rel="stylesheet" href="bluestyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn</title>
 </head>
 <body>
 
-<h1>Hello world!</h1>
-<div><img src="img_hello_world.jpg" alt="Hello World from Space" style="width:100%;max-width:640px"></div>
-<p>This is the first file in my new Git Repo.</p>
-<p>This line is here to show how merging works.</p>
-<div><img src="img_hello_git.jpg" alt="Hello Git" style="width:100%;max-width:640px"></div>
+    <div id="alrawdhan">
+        <h1>Welcome to my Page</h1>
+        <p>Welcome {{ 'Mr ' + name }} We are happy to see you</p>
+        <p>Your age is: {{age +'Years'}}</p>
+        <p>Your first skills is {{skills[0]}}</p>
+        <p>You are {{ isSubscribed ? 'Subscribe' : 'Not Subscribed' }} </p>
+        <p>Your First Test Result is: {{ comletedTests[0].testResult}}</p>
+        <p>{{date}}</p>
+        <p>{{YourAgeInDays()}}</p>
+        <button @click="showNewDate">Show new date</button>
+        <p v-show="name">Your name is {{ name }}</p>
+        <p v-if="age">Your age is {{ age }}</p>
 
-  <h1>Hello world!</h1>
-<div><img src="img_hello_world.jpg" alt="Hello World from Space" style="width:100%;max-width:640px"></div>
-<p>This is the first file in my new Git Repo.</p>
-<p>This line is here to show how merging works.</p>
-<div><img src="img_hello_git.jpg" alt="Hello Git" style="width:100%;max-width:640px"></div>
+        <ul>
+            <li v-for="skill in skills">{{skill}}</li>
+        </ul>
+        <ul>
+            <li v-for="(skill, index) in skills">{{index}} => {{skill}}</li>
+        </ul>
 
+        <ul>
+            <li v-for="test in comletedTests">{{test.testName}} | {{test.testResult}}</li>
+        </ul>
+
+        <a href="#">
+            <img src="{{imageSrc}}" alt="">
+        </a>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#alrawdhan',
+            data: {
+                name: '',
+                age: '',
+                date: 'Today',
+                skills: ['HTML','CSS','Js'],
+                isSubscribed: true,
+                comletedTests: [
+                    {
+                        testName: 'First Test',
+                        testResult: '80%'
+                    },
+                    {
+                        testName: 'Second Test',
+                        testResult: '70%'
+                    },
+                    {
+                        testName: 'Third Test',
+                        testResult: '90%'
+                    }
+                ],
+                imageSrc: 'stc.png',
+                imageAltText: 'Alt text',
+                imageUrl: 'https://www.google.com'
+            },
+            methods: {
+                YourAgeInDays() {
+                    return this.age * 365
+                },
+                showNewDate() {
+                    this.date = Date();
+                }
+            }
+        })
+    </script>
+    
 </body>
 </html>
